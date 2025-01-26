@@ -1,38 +1,43 @@
-﻿namespace ConsoleApp1
+using ConsoleApp1;
+
+namespace ConsoleApp9
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-           // Console.OutputEncoding = System.Text.Encoding.UTF8;
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
 
             KafeMashina myMachine = new KafeMashina();
 
             Console.WriteLine("Добре дошли!");
 
-            myMachine.DisplayStatus();
+            myMachine.Rezervoar();
+
+
+            Console.WriteLine("Изберете действие:");
+            Console.WriteLine("1. Включете машината");
+            Console.WriteLine("2. Направете кафе");
+            Console.WriteLine("3. Допълнете ресурси");
+            Console.WriteLine("4. Проверете състоянието");
+            Console.WriteLine("5. Изключи");
 
             while (true)
             {
-                Console.WriteLine("Изберете действие:");
-                Console.WriteLine("1. Включете машината");
-                Console.WriteLine("2. Направете кафе");
-                Console.WriteLine("3. Допълнете ресурси");
-                Console.WriteLine("4. Проверете състоянието");
-                Console.WriteLine("5. Изключи");
+
 
                 string izbor = Console.ReadLine()?.Trim();
 
                 if (izbor == "1")
                 {
-                    myMachine.TurnOn();
+                    myMachine.Vkljchi();
                 }
                 else if (izbor == "2")
                 {
                     Console.WriteLine("Въведете вид кафе");
                     string coffeeType = Console.ReadLine();
 
-                    myMachine.MakeCoffee(coffeeType);
+                    myMachine.NapraviKafe(coffeeType);
                 }
                 else if (izbor == "3")
                 {
@@ -40,16 +45,16 @@
                 }
                 else if (izbor == "4")
                 {
-                    myMachine.DisplayStatus();
+                    myMachine.Rezervoar();
                 }
                 else if (izbor == "5")
                 {
                     Console.WriteLine("Довиждане!");
-                    break; 
+                    break;
                 }
                 else
                 {
-                    Console.WriteLine("Невалиден избор. Опитайте отново.");
+                    Console.WriteLine("ГРЕШКА!!!!!!!!!");
                 }
 
 
@@ -58,3 +63,4 @@
         }
     }
 }
+
