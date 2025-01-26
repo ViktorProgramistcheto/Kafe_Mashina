@@ -1,14 +1,14 @@
-﻿using System;
+using System;
 
 namespace ConsoleApp1
 {
     internal class KafeMashina
     {
-        private int mliturVoda; // в милилитри
-        private int gramaKafe; // в грама
+        private int mliturVoda;
+        private int gramaKafe;
         private bool vkljucheno;
 
-   
+
         public int MliturVoda
         {
             get { return mliturVoda; }
@@ -18,7 +18,7 @@ namespace ConsoleApp1
         public int GramaKafe
         {
             get { return gramaKafe; }
-            set { gramaKafe = value; } 
+            set { gramaKafe = value; }
         }
 
         public bool Vkljucheno
@@ -27,15 +27,17 @@ namespace ConsoleApp1
             set { vkljucheno = value; }
         }
 
-       
+
 
 
 
         public KafeMashina()
         {
-            mliturVoda = 1000; 
-            gramaKafe = 200; 
-            vkljucheno = false; 
+
+
+            mliturVoda = 1000;
+            gramaKafe = 200;
+            vkljucheno = false;
         }
 
 
@@ -44,7 +46,7 @@ namespace ConsoleApp1
 
 
 
-        public void TurnOn()
+        public void Vkljchi()
         {
             if (vkljucheno)
             {
@@ -57,7 +59,7 @@ namespace ConsoleApp1
             }
         }
 
-        public void MakeCoffee(string type)
+        public void NapraviKafe(string type)
         {
             if (!vkljucheno)
             {
@@ -68,11 +70,11 @@ namespace ConsoleApp1
             int waterNeeded = 0;
             int coffeeNeeded = 0;
 
-         
-                Console.WriteLine("Изчакайте!");
 
-                waterNeeded = 200;
-                coffeeNeeded = 10;
+            Console.WriteLine("Изчакайте!");
+
+            waterNeeded = 200;
+            coffeeNeeded = 10;
 
 
             if (mliturVoda >= waterNeeded && gramaKafe >= coffeeNeeded)
@@ -95,7 +97,7 @@ namespace ConsoleApp1
             Console.WriteLine("Машината е заредена!");
         }
 
-        public void DisplayStatus()
+        public void Rezervoar()
         {
             Console.WriteLine($"Ниво на водата: {mliturVoda} мл");
             Console.WriteLine($"Ниво на кафето: {gramaKafe} г");
