@@ -1,0 +1,149 @@
+using System;
+using System.Collections.Generic;
+
+class Plant
+{
+  
+    private string name;
+    private int waterLevel;
+    private string growthStage;
+
+  
+    public string Name
+    {
+        get { return name; }
+        set { name = value; }
+    }
+
+    public int WaterLevel
+    {
+        get { return waterLevel; }
+        set { waterLevel = value; }
+    }
+
+    public string GrowthStage
+    {
+        get { return growthStage; }
+        set { growthStage = value; }
+    }
+
+  
+    public Plant()
+    {
+        Name = "Без име";
+        WaterLevel = 50;
+        GrowthStage = "Семе";
+    }
+
+    public Plant(string name, int waterLevel)
+    {
+        Name = name;
+        WaterLevel = waterLevel;
+        GrowthStage = "Семе";
+    }
+
+  
+    public void Water()
+    {
+        WaterLevel += 20;
+        Console.WriteLine($"{Name} е полято. Ниво на вода: {WaterLevel}");
+    }
+
+    public void Grow()
+    {
+        if (WaterLevel > 75 && GrowthStage == "Стрък")
+        {
+            GrowthStage = "Зряло";
+            Console.WriteLine($"{Name} е пораснало до етап: {GrowthStage}!");
+        }
+        else if (WaterLevel > 50 && GrowthStage == "Семе")
+        {
+            GrowthStage = "Стрък";
+            Console.WriteLine($"{Name} е пораснало до етап: {GrowthStage}!");
+        }
+        else
+        {
+            Console.WriteLine($"{Name} няма достатъчно вода, за да расте.");
+        }
+    }
+
+    public void DisplayInfo()
+    {
+        Console.WriteLine($"Растение: {Name}, Ниво на вода: {WaterLevel}, Етап на растеж: {GrowthStage}");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        List<Plant> garden = new List<Plant>();
+
+        
+    
+
+        while (true)
+        {
+            Console.WriteLine("\nИзберете опция:");
+            Console.WriteLine("1. Добавете растение");
+            Console.WriteLine("2. Полейте растение");
+            Console.WriteLine("3. Вижте информация за всички растения");
+            Console.WriteLine("4. Направете растенията да растат");
+            Console.WriteLine("5. Изход");
+
+            string choice = Console.ReadLine();
+
+            if (choice == "1")
+            {
+                Console.Write("Въведете име на растението: ");
+                string name = Console.ReadLine();
+                Console.Write("Въведете начално ниво на вода: ");
+                int waterLevel = int.Parse(Console.ReadLine());
+                garden.Add(new Plant(name, waterLevel));
+                Console.WriteLine("Растението е добавено успешно!");
+            }
+            else if (choice == "2")
+            {
+                Console.WriteLine("Изберете растение, което да полеете:");
+                for (int i = 0; i < garden.Count; i++)
+                {
+                    Console.WriteLine($"{i + 1}. {garden[i].Name}");
+                }
+                int selectedIndex = int.Parse(Console.ReadLine()) - 1;
+                if (selectedIndex >= 0 && selectedIndex < garden.Count)
+                {
+                    garden[selectedIndex].Water();
+                }
+                else
+                {
+                    Console.WriteLine("Невалиден избор.");
+                }
+            }
+            else if (choice == "3")
+            {
+                Console.WriteLine("Информация за всички растения:");
+                foreach (var plant in garden)
+                {
+                    plant.DisplayInfo();
+                }
+            }
+            else if (choice == "4")
+            {
+                Console.WriteLine("Направете растенията да растат:");
+                foreach (var plant in garden)
+                {
+                    plant.Grow();
+                }
+            }
+            else if (choice == "5")
+            {
+                running = false;
+                Console.WriteLine("Изход от програмата. Благодарим, че използвахте симулатора!");
+            }
+            else
+            {
+                Console.WriteLine("Невалиден избор, моля опитайте отново.");
+            }
+        }
+    }
+}
