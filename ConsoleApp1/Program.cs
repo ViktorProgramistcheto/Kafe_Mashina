@@ -6,8 +6,9 @@ namespace ConsoleApp9
     {
         static void Main(string[] args)
         {
-         
 
+            // при проблем със символите използвайте: Console.OutputEncoding = System.Text.Encoding.UTF8;
+                
             KafeMashina myMachine = new KafeMashina();
 
             Console.WriteLine("Добре дошли!");
