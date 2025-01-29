@@ -6,7 +6,7 @@ namespace ConsoleApp9
     {
         static void Main(string[] args)
         {
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
+         
 
             KafeMashina myMachine = new KafeMashina();
 
@@ -26,7 +26,7 @@ namespace ConsoleApp9
             {
 
 
-                string izbor = Console.ReadLine()?.Trim();
+                string izbor = Console.ReadLine();
 
                 if (izbor == "1")
                 {
